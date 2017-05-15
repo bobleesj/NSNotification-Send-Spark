@@ -13,16 +13,19 @@ let myNotificationKey = "com.bobthedeveloper.notificationKey"
 class SecondVC: UIViewController {
 
   @IBOutlet weak var secondVCLabel: UILabel!
-    override func viewDidLoad() {
+    
+  override func viewDidLoad() {
         super.viewDidLoad()
-      	NotificationCenter.default.addObserver(self, selector: #selector(doThisWhenNotify), name: NSNotification.Name(rawValue: myNotificationKey), object: nil)
-      
-    }
+      	NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doThisWhenNotify),
+                                               name: NSNotification.Name(rawValue: myNotificationKey),
+                                               object: nil)
+  }
   
   @IBAction func tabToNotifyBack(_ sender: UIButton) {
     secondVCLabel.text = "Notification Completed!😜"
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: myNotificationKey), object: nil)
-    
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: myNotificationKey),
+                                    object: nil)
   }
   
   func doThisWhenNotify() {
